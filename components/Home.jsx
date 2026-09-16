@@ -2,10 +2,37 @@ import React from 'react';
 
 const Home = () => {
   return (
-    <div id="home-text">
-      <h2>Home</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae obcaecati sapiente, cupiditate earum quaerat quibusdam fugit tenetur officiis, consequatur adipisci, sit iure enim voluptates quod dignissimos dolore beatae voluptatibus! Laudantium! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur ratione quidem quia consequuntur, saepe esse est recusandae at voluptas quod, quis architecto possimus assumenda similique fuga nostrum odio repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, odio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nostrum reiciendis, eius ea quae rem optio deleniti iste, adipisci voluptatum accusamus delectus placeat? Repellendus assumenda voluptate expedita maiores porro numquam consequatur qui temporibus corrupti quod, est sed ducimus dolor obcaecati ex neque optio animi nisi labore blanditiis sit earum voluptatem perspiciatis! Porro doloribus vitae nisi iusto voluptas. Consequatur, deleniti corporis. Illo doloremque porro voluptatibus consequuntur quo ducimus aut fugiat, soluta atque? Laboriosam earum iusto obcaecati, optio amet ab at minima ut quidem nulla maiores, ad voluptas tenetur ratione dicta ipsam vero doloremque id recusandae ipsa ea, totam officiis nemo? Iusto?</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae obcaecati sapiente, cupiditate earum quaerat quibusdam fugit tenetur officiis, consequatur adipisci, sit iure enim voluptates quod dignissimos dolore beatae voluptatibus! Laudantium! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur ratione quidem quia consequuntur, saepe esse est recusandae at voluptas quod, quis architecto possimus assumenda similique fuga nostrum odio repudiandae. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, odio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nostrum reiciendis, eius ea quae rem optio deleniti iste, adipisci voluptatum accusamus delectus placeat? Repellendus assumenda voluptate expedita maiores porro numquam consequatur qui temporibus corrupti quod, est sed ducimus dolor obcaecati ex neque optio animi nisi labore blanditiis sit earum voluptatem perspiciatis! Porro doloribus vitae nisi iusto voluptas. Consequatur, deleniti corporis. Illo doloremque porro voluptatibus consequuntur quo ducimus aut fugiat, soluta atque? Laboriosam earum iusto obcaecati, optio amet ab at minima ut quidem nulla maiores, ad voluptas tenetur ratione dicta ipsam vero doloremque id recusandae ipsa ea, totam officiis nemo? Iusto?</p>
+    <div className="home-page">
+      <section className="hero">
+        <h1 className="hero-title">Newslett</h1>
+        <p className="hero-subtitle">
+          A community-driven space for sharing articles, starting discussions, and following the topics you care about.
+        </p>
+      </section>
+
+      <section className="home-highlights">
+        <div className="highlight-card">
+          <h2>Discover</h2>
+          <p>
+            Browse articles across a range of topics, curated and shared by the community rather than a single
+            editorial team.
+          </p>
+        </div>
+        <div className="highlight-card">
+          <h2>Discuss</h2>
+          <p>
+            Every article is a conversation. Comment, reply, and see what other readers think — the discussion is
+            often as valuable as the article itself.
+          </p>
+        </div>
+        <div className="highlight-card">
+          <h2>Follow</h2>
+          <p>
+            Explore topics that interest you and keep track of the users whose posts and comments you find worth
+            coming back to.
+          </p>
+        </div>
+      </section>
     </div>
   );
 };

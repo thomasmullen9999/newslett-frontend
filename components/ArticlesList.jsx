@@ -50,7 +50,7 @@ const ArticlesList = () => {
   return (
     <main className="articles-page">
       <div className="controls">
-        <h2>Articles</h2>
+        <h2>Articles{topicQuery ? `: ${topicQuery}` : ""}</h2>
         <div className="dropdowns">
           <label htmlFor="sort-by">Sort By:</label>
           <select
@@ -77,11 +77,15 @@ const ArticlesList = () => {
         </div>
       </div>
 
-      <div className="articles-grid">
-        {articles.map((article) => (
-          <PreviewArticleCard article={article} key={article.article_id} />
-        ))}
-      </div>
+      {articles.length === 0 ? (
+        <p className="articles-empty-state">No articles found for this topic yet.</p>
+      ) : (
+        <div className="articles-grid">
+          {articles.map((article) => (
+            <PreviewArticleCard article={article} key={article.article_id} />
+          ))}
+        </div>
+      )}
     </main>
   );
 };

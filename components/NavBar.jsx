@@ -1,16 +1,26 @@
-import React from 'react';
-import { Button, ButtonGroup } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+const navItems = [
+  { to: "/", label: "Home", end: true },
+  { to: "/articles", label: "Articles" },
+  { to: "/users", label: "Users" },
+  { to: "/topics", label: "Topics" },
+];
 
 const NavBar = () => {
   return (
     <nav id="nav-bar">
-      <ButtonGroup>
-          <Link to="/"><Button>Home</Button></Link>
-          <Link to="/articles"><Button>Articles</Button></Link>  
-          <Link to="/users"><Button>Users</Button></Link>    
-          <Link to="/topics"><Button>Topics</Button></Link>    
-      </ButtonGroup>
+      {navItems.map(({ to, label, end }) => (
+        <NavLink
+          key={to}
+          to={to}
+          end={end}
+          className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}
+        >
+          {label}
+        </NavLink>
+      ))}
     </nav>
   );
 };

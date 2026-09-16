@@ -13,11 +13,11 @@ import UsersList from '../components/UsersList'
 import TopicsList from '../components/TopicsList'
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({
-    username: 'weegembump',
-    name: 'Gemma Bump',
-    avatar_url: 'https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553'
-  })
+  const [loggedInUser, setLoggedInUser] = useState(  {
+    username: "spidey_parker",
+    name: "Peter Parker",
+    avatar_url: "https://robohash.org/spidey_parker.png?set=set1",
+  },)
 
   return (
     <UserContext.Provider value={{loggedInUser, setLoggedInUser}}>

@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const PreviewArticleCard = ({ article }) => {
   const {
@@ -13,44 +12,43 @@ const PreviewArticleCard = ({ article }) => {
     article_img_url,
     comment_count,
   } = article;
+
   const fullArticleLink = `/articles/${article_id}`;
 
-  // Convert ISO string to Date object
-  const date = new Date(created_at);
-
-  // Format the date into the desired readable format
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
-  };
-  const formattedDate = date.toLocaleString("en-US", options);
-
-  // Construct the output string in the desired format
-  const readableDate = formattedDate.replace(",", "");
+  const readableDate = new Date(created_at)
+    .toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    })
+    .replace(",", "");
 
   return (
     <div className="preview-article-card">
-      <h3>{title}</h3>
-      <p>Topic: {topic}</p>
+      <span className="preview-topic-tag">{topic}</span>
+
       <img
         src={article_img_url}
-        width="80%"
-        alt="A background related to the article's topic"
-        className="rounded-corners"
-      ></img>
-      <p>
-        Published by <strong>{author}</strong> on {readableDate}
+        alt={`Illustration for the article: ${title}`}
+        className="preview-article-image"
+      />
+
+      <h3 className="preview-article-title">{title}</h3>
+
+      <p className="preview-article-byline">
+        By <strong>{author}</strong> &middot; {readableDate}
       </p>
-      <p>
-        <strong>&#128077; {votes}</strong>&emsp;&emsp;&emsp;
-        <strong>&#128172; {comment_count}</strong>
-      </p>
-      <Link to={fullArticleLink}>
-        <Button>View Full Article</Button>
+
+      <div className="preview-article-stats">
+        <span>👍 {votes}</span>
+        <span>💬 {comment_count}</span>
+      </div>
+
+      <Link to={fullArticleLink} className="preview-article-link">
+        View full article
       </Link>
     </div>
   );

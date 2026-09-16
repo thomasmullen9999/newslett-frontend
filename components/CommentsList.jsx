@@ -46,8 +46,6 @@ const CommentsList = ({ id }) => {
   return (
     <section id="comments-list">
       <h2>Comments ({comments.length})</h2>
-      <h3>Add Comment</h3>
-      <ErrorComponent message={error ? `${error.err.message}.` : ""} />
 
       <form className="comment-form" onSubmit={handleCommentSubmit}>
         <textarea
@@ -59,21 +57,27 @@ const CommentsList = ({ id }) => {
         />
         <div className="comment-form-footer">
           <button type="submit" disabled={isPosting}>
-            {isPosting ? "Posting..." : "Post"}
+            {isPosting ? "Posting..." : "Post comment"}
           </button>
         </div>
       </form>
 
-      <div className="comment-cards-container">
-        {comments.map((comment) => (
-          <CommentCard
-            key={comment.comment_id}
-            comment={comment}
-            comments={comments}
-            setComments={setComments}
-          />
-        ))}
-      </div>
+      {error && <ErrorComponent message={`${error.err.message}.`} />}
+
+      {comments.length === 0 ? (
+        <p className="comments-empty-state">No comments yet — be the first to share your thoughts.</p>
+      ) : (
+        <div className="comment-cards-container">
+          {comments.map((comment) => (
+            <CommentCard
+              key={comment.comment_id}
+              comment={comment}
+              comments={comments}
+              setComments={setComments}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

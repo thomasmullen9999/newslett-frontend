@@ -1,19 +1,17 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const TopicCard = ({topic}) => {
-
+const TopicCard = ({ topic }) => {
   const { slug, description } = topic;
-  const topicsLink = `/articles?topic=${slug}`
+  const topicsLink = `/articles?topic=${slug}`;
 
   return (
-    <li>
-      <div className= "topic-card">
+    <li className="topic-card">
       <h3>{slug}</h3>
       <p>{description}</p>
-      <Link to={topicsLink}><Button>View related articles</Button></Link>
-      </div>
+      <Link to={topicsLink} className="preview-article-link">
+        View related articles
+      </Link>
     </li>
   );
 };
