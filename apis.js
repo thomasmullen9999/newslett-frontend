@@ -44,10 +44,10 @@ export const fetchCommentsByArticleId = (id) => {
   });
 };
 
-export const changeVotesByArticleId = (id) => {
+export const changeVotesByArticleId = (id, increment) => {
   return newsApi
     .patch(`/articles/${id}`, {
-      inc_votes: 1,
+      inc_votes: increment,
     })
     .then((response) => {
       return response.data;
