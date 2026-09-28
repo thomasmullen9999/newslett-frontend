@@ -3,20 +3,43 @@ import { UserContext } from "../contexts/User";
 
 const UserCard = ({ user }) => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+
   const { username, name, avatar_url } = user;
-  const imageText = `A Mr. Men cartoon character, representing ${username}`;
   const isCurrentUser = loggedInUser?.username === username;
+  const displayName = name || username;
 
   return (
     <li className={`user-card${isCurrentUser ? " user-card-active" : ""}`}>
-      <img src={avatar_url} alt={imageText} />
-      <h3>{username}</h3>
-      <p className="user-card-name">{name}</p>
+      <div className="user-card-avatar-wrapper">
+        <img
+          src={avatar_url}
+          alt={`${displayName}'s avatar`}
+          className="user-card-avatar"
+        />
+
+        {isCurrentUser && (
+          <span className="user-card-status" aria-label="Currently logged in">
+            ✓
+          </span>
+        )}
+      </div>
+
+      <div className="user-card-content">
+        <h3 className="user-card-username">@{username}</h3>
+        <p className="user-card-name">{displayName}</p>
+      </div>
 
       {isCurrentUser ? (
-        <span className="user-card-badge">Logged in</span>
+        <span className="user-card-badge">Currently logged in</span>
       ) : (
-        <button onClick={() => setLoggedInUser(user)}>Log in</button>
+        <button
+          type="button"
+          className="user-card-login-button"
+          onClick={() => setLoggedInUser(user)}
+          aria-label={`Log in as ${displayName}`}
+        >
+          Continue as @{username}
+        </button>
       )}
     </li>
   );
